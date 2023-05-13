@@ -16,3 +16,4 @@ dateNow.textContent = `${day}-${month}-${year}`;
 dateNow.addEventListener("click", () => {
   location.reload();
 });
+

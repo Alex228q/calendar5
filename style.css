@@ -33,7 +33,7 @@ body {
   cursor: pointer;
   padding: 0 10px;
   transition: all 0.3s;
-  font-size: 1.3rem;
+  font-size: 2rem;
 }
 
 .header button:hover {
@@ -45,7 +45,7 @@ body {
   font-weight: bold;
   color: var(--accent-color);
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 /* days */
@@ -136,3 +136,5 @@ body {
   height: 30px;
   box-shadow: inset 0 0 10px rgba(255, 0, 0, 1);
 }
+
+
