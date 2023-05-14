@@ -19,13 +19,51 @@ class Calendar {
   #month;
   #date;
   #dateString;
+  #crewNumber = 2;
 
-  #morning1 = new Date(2023, 0, 8);
-  #morning2 = new Date(2023, 0, 9);
-  #evening1 = new Date(2023, 0, 10);
-  #evening2 = new Date(2023, 0, 11);
-  #night1 = new Date(2023, 0, 14);
-  #night2 = new Date(2023, 0, 15);
+  #crew1 = {
+    newDateMorning1: new Date(2023, 0, 6),
+    newDateMorning2: new Date(2023, 0, 7),
+    newDateEvening1: new Date(2023, 0, 8),
+    newDateEvening2: new Date(2023, 0, 9),
+    newDateNight1: new Date(2023, 0, 12),
+    newDateNight2: new Date(2023, 0, 13),
+  };
+
+  #crew2 = {
+    newDateMorning1: new Date(2023, 0, 8),
+    newDateMorning2: new Date(2023, 0, 9),
+    newDateEvening1: new Date(2023, 0, 10),
+    newDateEvening2: new Date(2023, 0, 11),
+    newDateNight1: new Date(2023, 0, 14),
+    newDateNight2: new Date(2023, 0, 15),
+  };
+  #crew3 = {
+    newDateMorning1: new Date(2023, 0, 10),
+    newDateMorning2: new Date(2023, 0, 11),
+    newDateEvening1: new Date(2023, 0, 12),
+    newDateEvening2: new Date(2023, 0, 13),
+    newDateNight1: new Date(2023, 0, 16),
+    newDateNight2: new Date(2023, 0, 17),
+  };
+
+  #crew4 = {
+    newDateMorning1: new Date(2023, 0, 12),
+    newDateMorning2: new Date(2023, 0, 13),
+    newDateEvening1: new Date(2023, 0, 14),
+    newDateEvening2: new Date(2023, 0, 15),
+    newDateNight1: new Date(2023, 0, 18),
+    newDateNight2: new Date(2023, 0, 19),
+  };
+
+  #crew5 = {
+    newDateMorning1: new Date(2023, 0, 14),
+    newDateMorning2: new Date(2023, 0, 15),
+    newDateEvening1: new Date(2023, 0, 16),
+    newDateEvening2: new Date(2023, 0, 17),
+    newDateNight1: new Date(2023, 0, 20),
+    newDateNight2: new Date(2023, 0, 21),
+  };
 
   //private methods
   #init = () => {
@@ -35,30 +73,47 @@ class Calendar {
     this.#setDate(defaultYear, defaultMonth, defaultDate);
     this.#updateData();
     this.#listenEvents();
+    this.#selectCrew();
   };
 
   #updateData = () => {
+    let crew;
+    switch (this.#crewNumber) {
+      case 1:
+        crew = this.#crew1;
+        break;
+      case 2:
+        crew = this.#crew2;
+        break;
+      case 3:
+        crew = this.#crew3;
+        break;
+      case 4:
+        crew = this.#crew4;
+        break;
+      case 5:
+        crew = this.#crew5;
+        break;
+      default:
+        break;
+    }
     for (let i = 1; i <= 200; i++) {
-      const newDateMorning1 = new Date(
-        this.#morning1.getTime() + 86400000 * 10 * i
-      );
-      const newDateMorning2 = new Date(
-        this.#morning2.getTime() + 86400000 * 10 * i
-      );
+      let {
+        newDateMorning1,
+        newDateMorning2,
+        newDateEvening1,
+        newDateEvening2,
+        newDateNight1,
+        newDateNight2,
+      } = crew;
+      newDateMorning1 = new Date(newDateMorning1.getTime() + 86400000 * 10 * i);
+      newDateMorning2 = new Date(newDateMorning2.getTime() + 86400000 * 10 * i);
 
-      const newDateEvening1 = new Date(
-        this.#evening1.getTime() + 86400000 * 10 * i
-      );
-      const newDateEvening2 = new Date(
-        this.#evening2.getTime() + 86400000 * 10 * i
-      );
+      newDateEvening1 = new Date(newDateEvening1.getTime() + 86400000 * 10 * i);
+      newDateEvening2 = new Date(newDateEvening2.getTime() + 86400000 * 10 * i);
 
-      const newDateNight1 = new Date(
-        this.#night1.getTime() + 86400000 * 10 * i
-      );
-      const newDateNight2 = new Date(
-        this.#night2.getTime() + 86400000 * 10 * i
-      );
+      newDateNight1 = new Date(newDateNight1.getTime() + 86400000 * 10 * i);
+      newDateNight2 = new Date(newDateNight2.getTime() + 86400000 * 10 * i);
 
       const dates = this.element.querySelectorAll(".date");
       dates.forEach((data) => {
@@ -263,5 +318,20 @@ class Calendar {
   #getFirstDay = () => {
     let day = new Date(this.#year, this.#month - 1, 1).getDay();
     return day === 0 ? 7 : day;
+  };
+
+  #selectCrew = () => {
+    const blockCrew = this.element.querySelector(".crewBlock");
+    const crewItem = this.element.querySelectorAll(".crew");
+    blockCrew.addEventListener("click", (e) => {
+      const target = e.target;
+      if (target.matches(".crew")) {
+        crewItem.forEach((item) => item.classList.remove("selectedCrew"));
+        target.classList.add("selectedCrew");
+        this.#crewNumber = +target.textContent;
+        this.#renderDates();
+        this.#updateData();
+      }
+    });
   };
 }
