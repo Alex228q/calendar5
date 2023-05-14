@@ -23,7 +23,7 @@ body {
 .header {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 20px;
+  /* margin-bottom:15px; */
 }
 
 .header button {
@@ -45,7 +45,7 @@ body {
   font-weight: bold;
   color: var(--accent-color);
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 /* days */
@@ -53,7 +53,7 @@ body {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  padding: 20px 0;
+  padding: 15px 0;
   font-size: 1.2rem;
   color: var(--accent-color);
 }
@@ -140,7 +140,7 @@ body {
 .crewBlock {
   display: flex;
   justify-content: space-between;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .crew {
