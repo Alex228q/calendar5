@@ -117,6 +117,10 @@ class Calendar {
 
       const dates = this.element.querySelectorAll(".date");
       dates.forEach((data) => {
+        if (this.#getDataTilteFormat(new Date()) === data.title) {
+          data.classList.add("currentDay");
+        }
+
         if (this.#getDataTilteFormat(newDateMorning1) === data.title) {
           data.classList.add("morning");
         }
