@@ -1,3 +1,15 @@
+window.addEventListener("load", async () => {
+  if ("serviceWorker" in navigator) {
+    try {
+      const reg = await navigator.serviceWorker.register("sw.js");
+    } catch (error) {
+      console.log(`Error =>>> ${error}`);
+    }
+  }
+});
+
+
+
 const calendarEL = document.querySelector(".calendar");
 
 new Calendar({
