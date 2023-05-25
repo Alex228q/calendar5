@@ -16,3 +16,15 @@ dateNow.textContent = `${day}-${month}-${year}`;
 dateNow.addEventListener("click", () => {
   location.reload();
 });
+
+let bipEvent = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  bipEvent = e;
+});
+
+document.querySelector(".btnInstall").addEventListener("click", () => {
+  if (bipEvent) {
+    bipEvent.prompt();
+  }
+});
