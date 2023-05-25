@@ -14,7 +14,7 @@ body {
 }
 
 .calendar {
-  padding: 20px;
+  padding:  0 16px;
   user-select: none;
   margin: 0px auto;
 }
