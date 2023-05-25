@@ -14,7 +14,7 @@ body {
 }
 
 .calendar {
-  padding:  0 16px;
+  padding: 16px;
   user-select: none;
   margin: 0px auto;
 }
@@ -23,7 +23,7 @@ body {
 .header {
   display: flex;
   justify-content: space-evenly;
-  /* margin-bottom:15px; */
+  margin-bottom:15px;
 }
 
 .header button {
@@ -45,7 +45,7 @@ body {
   font-weight: bold;
   color: var(--accent-color);
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 /* days */
@@ -87,7 +87,7 @@ body {
 
 .dateNow {
   display: inline-block;
-  margin-top: 25px;
+  margin-top: 20px;
   padding: 5px;
   font-size: 1.4rem;
   font-weight: bold;
@@ -145,7 +145,7 @@ body {
 }
 
 .crewBlock {
-  display: flex ;
+  display: flex;
   justify-content: space-between;
   padding-top: 30px;
 }
@@ -168,11 +168,4 @@ body {
 .selectedCrew {
   box-shadow: 0px 5px 20px var(--accent-color);
   color: #ff2189;
-}
-
-@media (display-mode:standalone),
-(display-mode:minimal-ui) {
-  .btnInstall {
-    display: none;
-  }
 }
