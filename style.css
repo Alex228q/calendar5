@@ -11,12 +11,17 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 .calendar {
   padding: 8px;
   user-select: none;
-  margin: 0px auto;
+  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* header */
@@ -151,6 +156,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding-top: 30px;
+  gap: 10px;
 }
 
 .crew {
